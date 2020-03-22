@@ -10,7 +10,7 @@ const InfosWorld = ({ }) => (
   >
     <CardPrimary>
       <TitleCard color='#e74c3c'>Mortes</TitleCard>
-      <InfoCard color='#e74c3c'>13000</InfoCard>
+      <InfoCard color='#e74c3c'>{reqByWorld.data}</InfoCard>
     </CardPrimary>
 
     <CardPrimary>
