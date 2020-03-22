@@ -1,14 +1,22 @@
 import axios from 'axios'
+import React, {useState} from 'react'
 
-const getCasesForCountries = async country => {
-    try {
-      const response = await axios.get(
-        `https://coronavirus-19-api.herokuapp.com/countries/${country}`,
-      )
-      console.log(response.data);
-    } catch (e) {
-      return null
-    }
-  }
+const reqByCountries = (country) => {
+  axios.get(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
+   .then(res => {
+     const data = res.data;
+     console.log(data);
+     return data;
+ })
+}
+
+const reqByWorld = () => {
+axios.get(`https://coronavirus-19-api.herokuapp.com/all`)
+.then(res => {
+  const data = res.data;
+  console.log(data);
+  return data;
+})
+}
   
-  export { getCasesForCountries }
+export { reqByWorld, reqByCountries }
