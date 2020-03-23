@@ -6,6 +6,12 @@ const GridBetween = styled.div`
     justify-content: space-between;
     padding: ${props => props.padding};
     margin: ${props => props.margin};
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 const CardPrimary = styled.div`
@@ -22,6 +28,10 @@ const CardPrimary = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(170, 187, 187, 0.5);
     padding: ${props => props.padding};
     margin: ${props => props.margin};
+
+    @media (max-width: 768px) {
+        margin-bottom: 24px;
+  }
 `
 
 const TitleCard = styled.h3`
