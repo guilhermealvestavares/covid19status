@@ -1,30 +1,42 @@
-import React from "react"
-import { reqByWorld, reqByCountries } from '../../services/dataCovid/dataCovid.js'
+import React, { useState, useEffect } from "react"
+import { reqByWorld } from '../../services/dataCovid/dataCovid.js'
 import { GridBetween, CardPrimary, TitleCard, InfoCard } from '../gridComponents/styled.js'
 
-const InfosWorld = ({ }) => (
-  <>
-  <GridBetween 
-    margin='64px 0 0 0'
-    onload={reqByWorld('all')}
-  >
-    <CardPrimary>
-      <TitleCard color='#e74c3c'>Mortes</TitleCard>
-      <InfoCard color='#e74c3c'>{reqByWorld.data}</InfoCard>
-    </CardPrimary>
+const InfosWorld = () => {
+  const [worldData, setWorldData] = useState(null);
 
-    <CardPrimary>
-      <TitleCard color='#2ecc71'>Recuperados</TitleCard>
-      <InfoCard color='#2ecc71'>95828</InfoCard>
-    </CardPrimary>
+  useEffect(() => {
+    reqByWorld().then(response => {
+      const { data } = response;
 
-    <CardPrimary>
-      <TitleCard color='#95a5a6'>Casos</TitleCard>
-      <InfoCard color='#95a5a6'>308000</InfoCard>
-    </CardPrimary>
-  </GridBetween>
+      setWorldData(data);
+    })
+  }, []);
 
-  </>
+  return (
+    <GridBetween margin='64px 0 0 0'>
+      <CardPrimary>
+        <TitleCard color='#e74c3c'>Mortes</TitleCard>
+        <InfoCard color='#e74c3c'>
+          {worldData && worldData.deaths}
+        </InfoCard>
+      </CardPrimary>
+
+      <CardPrimary>
+        <TitleCard color='#2ecc71'>Recuperados</TitleCard>
+        <InfoCard color='#2ecc71'>
+          {worldData && worldData.recovered}
+        </InfoCard>
+      </CardPrimary>
+
+      <CardPrimary>
+        <TitleCard color='#95a5a6'>Casos</TitleCard>
+        <InfoCard color='#95a5a6'>
+          {worldData && worldData.cases}
+        </InfoCard>
+      </CardPrimary>
+    </GridBetween>
   )
+}
   
   export default InfosWorld
