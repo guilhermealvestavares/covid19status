@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react"
-import { reqByWorld } from '../../services/dataCovid/dataCovid.js'
+import { reqByWorld, reqByAllCountries } from '../../services/dataCovid/dataCovid.js'
 import { GridBetween, CardPrimary, TitleCard, InfoCard } from '../gridComponents/styled.js'
 
 const InfosWorld = () => {
   const [worldData, setWorldData] = useState(null);
+  const [allCountriesData, setAllCountriesData] = useState(null);
 
   useEffect(() => {
     reqByWorld().then(response => {
       const { data } = response;
-
       setWorldData(data);
     })
-  }, []);
+
+    reqByAllCountries().then(response => {
+      const { data } = response;
+      setAllCountriesData(data);
+
+     for(var index = 0; index <allCountriesData.length;index++){
+       console.log(allCountriesData[index].country);
+     }
+    })
+  },[]);
 
   return (
     <GridBetween margin='64px 0 0 0'>
