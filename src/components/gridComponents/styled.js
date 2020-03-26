@@ -92,8 +92,29 @@ const InfoCard = styled.p`
     padding: 0;
 `
 
+const Search = styled.input`
+    width: 100%;
+    height:30px;
+    max-width: 400px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Nunito', arial;
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    border: .0625em solid #ddd;
+    border-radius: .125em;
+}
+
+
+
+    @media (max-width: 768px) {
+        margin-bottom: 280px;
+  }
+`
 
 
 
 
-export { GridBetween, CardPrimary, TitleCard,InfoCard, GridWrap, CardSecondary }
+
+export { GridBetween, CardPrimary, TitleCard,InfoCard, GridWrap, CardSecondary, Search }

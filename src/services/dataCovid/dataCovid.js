@@ -11,5 +11,9 @@ const reqByWorld = () => {
 const reqByAllCountries = () => {
   return axios.get(`https://coronavirus-19-api.herokuapp.com/countries`)
 }
+
+const flagCountries = () => {
+  return axios.get(`https://restcountries.eu/rest/v2/all`)
+}
   
-export { reqByWorld, reqByCountries, reqByAllCountries }
+export { reqByWorld, reqByCountries, reqByAllCountries, flagCountries }
